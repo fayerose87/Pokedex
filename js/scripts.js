@@ -1,18 +1,18 @@
 let pokemonList = [
   {
-    name: 'Articuno',
-    height: 3,
-    type: ['ice','flying']
+    name: 'Bulbasaur',
+    height: 2,
+    type: ['grass','poison']
     },
   {
-    name: 'Zapdos',
+    name: 'Charizard',
     height: 5,
-    type: ['electric','flying']
+    type: ['fire','flying']
     },
   {
-    name: 'Moltres',
-    height: 6,
-    type: ['fire','flying']
+    name: 'Lapras',
+    height: 8,
+    type: ['water','ice']
   }
 ];
 
@@ -20,8 +20,8 @@ for (let i = 0; i < pokemonList.length; i++) {
   if (pokemonList[i].height >= 6) {
     document.write(`${(pokemonList[i].name)} is ${pokemonList[i].height}ft tall - Wowza! That is a BIG pokemon!<br/>`);
   } else if (pokemonList[i].height > 3 && pokemonList[i].height <6) {
-    document.write(`${(pokemonList[i].name)} is ${pokemonList[i].height}ft tall - That is medium pokemon!<br/>`);
+    document.write(`${(pokemonList[i].name)} is ${pokemonList[i].height}ft tall - Defintely not the tallest pokemon I've seen!<br/>`);
   } else {
-    document.write(`${(pokemonList[i].name)} is ${pokemonList[i].height}ft tall - Aww! That pokemon is tiny!<br/>`);
+    document.write(`${(pokemonList[i].name)} is ${pokemonList[i].height}ft tall - Aww! That pokemon is so tiny!<br/>`);
   }
 }
