@@ -1,0 +1,39 @@
+/* ------------------------ All Page Effects ------------------------ */
+:root {
+  --green: #38F5BC;
+  --red: #FF6250;
+  --blue: #509DFF;
+  --yellow: #FFD92D;
+  --font-color: #000;
+  --font-bold: 700;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--font-color);
+}
+
+h1 {
+  font-family: 'Turret Road';
+  color: var(--font-color);
+  font-size: 60px;
+}
+
+h2 {
+  color: var(--font-color);
+  font-size: 24px;
+  font-weight: var(--font-bold);
+}
+
+h3 {
+  color: var(--font-color);
+  font-size: 18px;
+  font-weight: var(--font-bold);
+}
