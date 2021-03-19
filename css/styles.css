@@ -18,22 +18,86 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: var(--font-color);
+  text-align: center;
 }
 
 h1 {
   font-family: 'Turret Road';
   color: var(--font-color);
   font-size: 60px;
+  text-align: center
 }
 
 h2 {
   color: var(--font-color);
   font-size: 24px;
   font-weight: var(--font-bold);
+  text-align: center;
 }
 
 h3 {
   color: var(--font-color);
   font-size: 18px;
   font-weight: var(--font-bold);
+}
+
+/* start grid fallback */
+.grid__item {
+  display: inline-block;
+  width: 33%;
+}
+
+/* end grid fallback */
+@supports (display: grid) {
+  .grid {
+    display: grid;
+
+    /* grid-template-columns: 300px 300px 300px; fractions are better than pixels - they are responsive */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  .grid__item {
+    background-color: #509DFF;
+    width: auto;
+    min-height: auto;
+    margin: 0;
+    padding: 20px;
+  }
+}
+
+  /* ------------------------ Media Queries ------------------------ */
+@media all and (max-width: 750px) {
+  .grid {
+    grid-gap: 10px;
+  }
+
+  .grid__item {
+    padding: 15px;
+  }
+
+  .grid__item:last-child {
+    grid-column: auto / auto;
+    grid-row: auto / auto;
+  }
+}
+
+@media all and (min-width: 500px) and (max-width: 750px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
 }
