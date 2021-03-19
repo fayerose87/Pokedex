@@ -28,8 +28,8 @@ for (let i = 0; i < pokemonList.length; i++) {
   if (pokemonList[i].height >= 6) {
     document.write(
       `<div class="grid__item">
-      <img class"pokemon__pic" src="${(pokemonList[i].image)}">
-      <h2>${(pokemonList[i].name)}</h2> 
+      <img class="pokemon__pic" src="${(pokemonList[i].image)}" alt="Pokemon illustration">
+      <h1>${(pokemonList[i].name)}</h1> 
       <p>${pokemonList[i].height}ft tall - Wowza! That is a BIG pokemon!</p>
       </div>`);
 
@@ -37,8 +37,8 @@ for (let i = 0; i < pokemonList.length; i++) {
   } else if (pokemonList[i].height > 3 && pokemonList[i].height < 6) {
     document.write(
     `<div class="grid__item">
-    <img class"pokemon__pic" src="${(pokemonList[i].image)}">
-    <h2>${(pokemonList[i].name)}</h2>
+    <img class="pokemon__pic" src="${(pokemonList[i].image)}" alt="Pokemon illustration">
+    <h1>${(pokemonList[i].name)}</h1>
     <p>${pokemonList[i].height}ft tall - Defintely not the tallest pokemon I've seen!</p>
     </div>`);
 
@@ -46,8 +46,8 @@ for (let i = 0; i < pokemonList.length; i++) {
   } else {
     document.write(
     `<div class="grid__item">
-    <img class"pokemon__pic" src="${(pokemonList[i].image)}">
-    <h2>${(pokemonList[i].name)}</h2>
+    <img class="pokemon__pic" src="${(pokemonList[i].image)}" alt="Pokemon illustration">
+    <h1>${(pokemonList[i].name)}</h1>
     <p>${pokemonList[i].height}ft tall - Aww! That pokemon is so tiny!</p>
     </div>`);
   }
