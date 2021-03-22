@@ -1,54 +1,83 @@
-let pokemonList = [
+//wrap pokemonList in IIFE
+let pokemonRepository = (function () {
+  let pokemonList = [
   {
     name: 'Bulbasaur',
     height: 2,
     image: 'img/bulbasaur.png',
-    type: ['grass','poison']
+    type: ['Grass'+ ', ' + 'Poison']
     },
   {
     name: 'Charizard',
     height: 5,
     image: 'img/charizard.png',
-    type: ['fire','flying']
+    type: ['Fire'+ ', ' + 'Flying']
     },
   {
     name: 'Lapras',
     height: 8,
     image: 'img/lapras.png',
-    type: ['water','ice']
-
+    type: ['Water'+ ', ' + 'Ice']
   }
 ];
 
-/* A for loop to iterate over each element of the array and then write it on the DOM.*/
+//adds pokemon to pokemonList
+function add(pokemon) {
+  pokemonList.push(pokemon);
+}
 
-for (let i = 0; i < pokemonList.length; i++) {
-  
+//retrives pokemonList data
+function getAll() {
+  return pokemonList;
+}
+
+return {
+  add: add,
+  getAll: getAll
+};
+})();
+
+//add pokemon Slowpoke to pokemonList
+pokemonRepository.add({
+  name: 'Slowpoke',
+  height: 4,
+  image: 'img/slowpoke.png',
+  type: ['Water'+ ', ' + 'Psychic']
+})
+
+pokemonRepository.getAll().forEach(function(pokemon) {
+
   //if height is greater than 6ft
-  if (pokemonList[i].height >= 6) {
+  if (pokemon.height >= 6) {
     document.write(
       `<div class="grid__item">
-      <img class="pokemon__pic" src="${(pokemonList[i].image)}" alt="Pokemon illustration">
-      <h1>${(pokemonList[i].name)}</h1> 
-      <p>${pokemonList[i].height}ft tall - Wowza! That is a BIG pokemon!</p>
+      <img class="pokemon__pic" src="${(pokemon.image)}" alt="Pokemon illustration">
+      <h1>${(pokemon.name)}</h1> 
+      <p>Height: ${pokemon.height}ft<br>
+      Type: ${(pokemon.type)}<br><br>
+      WOW! That is a BIG pokemon!</p>
       </div>`);
 
     //if height is between 3ft and 6ft
-  } else if (pokemonList[i].height > 3 && pokemonList[i].height < 6) {
+  } else if (pokemon.height > 3 && pokemon.height < 6) {
     document.write(
-    `<div class="grid__item">
-    <img class="pokemon__pic" src="${(pokemonList[i].image)}" alt="Pokemon illustration">
-    <h1>${(pokemonList[i].name)}</h1>
-    <p>${pokemonList[i].height}ft tall - Defintely not the tallest pokemon I've seen!</p>
-    </div>`);
+      `<div class="grid__item">
+      <img class="pokemon__pic" src="${(pokemon.image)}" alt="Pokemon illustration">
+      <h1>${(pokemon.name)}</h1> 
+      <p>Height: ${pokemon.height}ft<br>
+      Type: ${(pokemon.type)}<br><br>
+      Defintely not the tallest pokemon I've seen!</p>
+      </div>`);
 
     //if height is less than 6ft
   } else {
     document.write(
-    `<div class="grid__item">
-    <img class="pokemon__pic" src="${(pokemonList[i].image)}" alt="Pokemon illustration">
-    <h1>${(pokemonList[i].name)}</h1>
-    <p>${pokemonList[i].height}ft tall - Aww! That pokemon is so tiny!</p>
-    </div>`);
+      `<div class="grid__item">
+      <img class="pokemon__pic" src="${(pokemon.image)}" alt="Pokemon illustration">
+      <h1>${(pokemon.name)}</h1> 
+      <p>Height: ${pokemon.height}ft<br>
+      Type: ${(pokemon.type)}<br><br>
+      Aww! That pokemon is so tiny!</p>
+      </div>`);
   }
-}
+})
