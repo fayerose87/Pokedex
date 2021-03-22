@@ -45,16 +45,14 @@ body {
 /* start grid fallback */
 .grid__item {
   display: inline-block;
-  width: 33%;
+  width: 25%;
 }
 
 /* end grid fallback */
 @supports (display: grid) {
   .grid {
     display: grid;
-
-    /* grid-template-columns: 300px 300px 300px; fractions are better than pixels - they are responsive */
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
   }
 
