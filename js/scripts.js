@@ -23,7 +23,16 @@ let pokemonRepository = (function () {
 
 //adds pokemon to pokemonList
 function add(pokemon) {
-  pokemonList.push(pokemon);
+  if (
+    typeof pokemon === 'object' &&
+    'name' in pokemon &&
+    'height' in pokemon &&
+    'type' in pokemon
+  ) {
+    pokemonList.push(pokemon);
+  } else {
+    console.log('pokemon is not correct');
+  }
 }
 
 //retrives pokemonList data
@@ -31,15 +40,24 @@ function getAll() {
   return pokemonList;
 }
 
+//create pokemon list with button
 function addListItem(pokemon){
-  let pokemonList = document.querySelector(".pokemon-list");
-  let listPokemon = document.createElement("li");
-  listPokemon.classList = "pokemon-item";
-  let button = document.createElement("button");
+  let pokemonList = document.querySelector('.pokemon-list');
+  let listPokemon = document.createElement('li');
+  listPokemon.classList = 'pokemon-item';
+  let button = document.createElement('button');
   button.innerText = pokemon.name;
-  button.classList.add("button");
+  button.classList.add('button');
   listPokemon.appendChild(button);
   pokemonList.appendChild(listPokemon);
+  button.addEventListener('click', function(event){
+    showDetails(pokemon);
+});
+}
+
+//shows pokemon details on click
+function showDetails(pokemon) {
+  console.log(pokemon);
 }
 
 return {
@@ -61,41 +79,3 @@ pokemonRepository.add({
 pokemonRepository.getAll().forEach(function(pokemon) {
   pokemonRepository.addListItem(pokemon);
 });
-
-
-
-
-//   //if height is greater than 6ft
-//   if (pokemon.height >= 6) {
-//     document.write(
-//       `<div class="pokemon__item">
-//       <img class="pokemon__pic" src="${(pokemon.image)}" alt="Pokemon illustration">
-//       <h1>${(pokemon.name)}</h1> 
-//       <p>Height: ${pokemon.height}ft<br>
-//       Type: ${(pokemon.type)}<br><br>
-//       WOW! That is a BIG pokemon!</p>
-//       </div>`);
-
-//     //if height is between 3ft and 6ft
-//   } else if (pokemon.height > 3 && pokemon.height < 6) {
-//     document.write(
-//       `<div class="pokemon__item">
-//       <img class="pokemon__pic" src="${(pokemon.image)}" alt="Pokemon illustration">
-//       <h1>${(pokemon.name)}</h1> 
-//       <p>Height: ${pokemon.height}ft<br>
-//       Type: ${(pokemon.type)}<br><br>
-//       Defintely not the tallest pokemon I've seen!</p>
-//       </div>`);
-
-//     //if height is less than 6ft
-//   } else {
-//     document.write(
-//       `<div class="pokemon__item">
-//       <img class="pokemon__pic" src="${(pokemon.image)}" alt="Pokemon illustration">
-//       <h1>${(pokemon.name)}</h1> 
-//       <p>Height: ${pokemon.height}ft<br>
-//       Type: ${(pokemon.type)}<br><br>
-//       Aww! That pokemon is so tiny!</p>
-//       </div>`);
-//   }
-// })
