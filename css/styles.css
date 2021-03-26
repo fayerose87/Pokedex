@@ -10,6 +10,7 @@
 
 * {
   box-sizing: border-box;
+  margin: 10px;
 }
 
 .header__logo {
@@ -43,53 +44,73 @@ body {
 }
 
 /* start grid fallback */
-.grid__item {
+.pokemon-item {
   display: inline-block;
   width: 25%;
 }
 
 /* end grid fallback */
 @supports (display: grid) {
-  .grid {
+  .pokemon-list {
+    list-style: none;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
   }
 
-  .grid__item {
+  .pokemon-item {
     background-color: #509DFF;
     width: auto;
-    min-height: auto;
+    min-height: 200px;
     margin: 0;
     padding: 20px;
-    border-radius: 5%;
+    border-radius: 25px;
+  }
+
+  .button {
+    padding: 15px;
+    text-align: center;
+    font-family: inherit;
+    font-weight: 700;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: var(--yellow);
+    color: var(--font-color);
+    border: none;
+    border-radius: 10px;
+  }
+
+  .button:hover,
+  .button:focus {
+    color: var(--blue);
   }
 }
 
   /* ------------------------ Media Queries ------------------------ */
 @media all and (max-width: 750px) {
-  .grid {
+  .pokemon-list {
     grid-gap: 10px;
   }
 
-  .grid__item {
+  .pokemon-item {
     padding: 15px;
   }
 
-  .grid__item:last-child {
+  .pokemon-item:last-child {
     grid-column: auto / auto;
     grid-row: auto / auto;
   }
 }
 
 @media all and (min-width: 500px) and (max-width: 750px) {
-  .grid {
+  .pokemon-list {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media all and (max-width: 500px) {
-  .grid {
+  .pokemon-list {
     grid-template-columns: 1fr;
   }
 
