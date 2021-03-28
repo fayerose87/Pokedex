@@ -79,6 +79,7 @@ body {
     color: var(--font-color);
     border: none;
     border-radius: 10px;
+    text-transform: capitalize;
   }
 
   .button:hover,
