@@ -1,5 +1,7 @@
-//wrap pokemonList in IIFE
+//wrap in IIFE
 let pokemonRepository = (function() {
+
+  //load pokemon from API
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
@@ -16,7 +18,7 @@ function add(pokemon) {
   }
 }
 
-//retrives pokemonList data
+//retrives pokemon data
 function getAll() {
   return pokemonList;
 }
@@ -53,6 +55,7 @@ function loadList() {
   })
 }
 
+//details to show when button is clicked
 function loadDetails(item) {
   let url = item.detailsUrl;
   return fetch(url).then(function (response) {
