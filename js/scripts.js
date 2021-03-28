@@ -1,33 +1,14 @@
 //wrap pokemonList in IIFE
-let pokemonRepository = (function () {
-  let pokemonList = [
-  {
-    name: 'Bulbasaur',
-    height: 2,
-    image: 'img/bulbasaur.png',
-    type: ['Grass'+ ', ' + 'Poison']
-    },
-  {
-    name: 'Charizard',
-    height: 5,
-    image: 'img/charizard.png',
-    type: ['Fire'+ ', ' + 'Flying']
-    },
-  {
-    name: 'Lapras',
-    height: 8,
-    image: 'img/lapras.png',
-    type: ['Water'+ ', ' + 'Ice']
-  }
-];
+let pokemonRepository = (function() {
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
 //adds pokemon to pokemonList
 function add(pokemon) {
   if (
     typeof pokemon === 'object' &&
     'name' in pokemon &&
-    'height' in pokemon &&
-    'type' in pokemon
+    'detailsUrl' in pokemon
   ) {
     pokemonList.push(pokemon);
   } else {
@@ -52,30 +33,58 @@ function addListItem(pokemon){
   pokemonList.appendChild(listPokemon);
   button.addEventListener('click', function(event){
     showDetails(pokemon);
-});
+  });
 }
 
-//shows pokemon details on click
-function showDetails(pokemon) {
-  console.log(pokemon);
+function loadList() {
+  return fetch(apiUrl).then(function (response) {
+    return response.json();
+  }).then(function (json) {
+    json.results.forEach(function (item) {
+      let pokemon = {
+        name: item.name,
+        detailsUrl: item.url
+      };
+      add(pokemon);
+      console.log(pokemon);
+    });
+  }).catch(function (e) {
+    console.error(e);
+  })
+}
+
+function loadDetails(item) {
+  let url = item.detailsUrl;
+  return fetch(url).then(function (response) {
+    return response.json();
+  }).then(function (details) {
+    // Now we add the details to the item
+    item.imageUrl = details.sprites.front_default;
+    item.height = details.height;
+    item.types = details.types;
+  }).catch(function (e) {
+    console.error(e);
+  });
+}
+
+function showDetails(item) {
+  pokemonRepository.loadDetails(item).then(function () {
+    console.log(item);
+  });
 }
 
 return {
   add: add,
   getAll: getAll,
-  addListItem: addListItem
+  addListItem: addListItem,
+  loadList: loadList,
+  loadDetails: loadDetails,
+  showDetails: showDetails
 };
 })();
 
-//add pokemon Slowpoke to pokemonList
-pokemonRepository.add({
-  name: 'Slowpoke',
-  height: 4,
-  image: 'img/slowpoke.png',
-  type: ['Water'+ ', ' + 'Psychic']
-})
-
-
-pokemonRepository.getAll().forEach(function(pokemon) {
-  pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
 });
