@@ -4,7 +4,7 @@ let pokemonRepository = (function () {
   //load pokemon from API
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-  let modalContainer = document.querySelector('#modal-container');
+  // let modalContainer = document.querySelector('#modal-container');
 
   //adds pokemon to pokemonList
   function add(pokemon) {
@@ -46,7 +46,9 @@ let pokemonRepository = (function () {
     let listPokemon = document.createElement('li');
     let button = document.createElement('button');
     button.innerText = pokemon.name;
-    button.classList.add('button');
+    button.classList.add("button");
+    button.setAttribute('data-target','#pokemonModal');
+    button.setAttribute('data-toggle', 'modal');
     listPokemon.appendChild(button);
     pokemonList.appendChild(listPokemon);
     button.addEventListener('click', function (event) {
@@ -56,71 +58,38 @@ let pokemonRepository = (function () {
 
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
-      showModal(pokemon);
+      let modalBody = $('.modal-body');
+      let modalTitle = $('.modal-title');
+      let modalHeader = $('.modal-header');
+
+      //clear existing content of the modal
+      modalTitle.empty();
+      modalBody.empty();
+
+      //create element for name in modal
+      let pokemonName = $("<h1>" + pokemon.name + "</h1>")
+    
+      //create img in modal
+      let pokemonImage = $('<img class="modal-img" style="width:50%">');
+      pokemonImage.attr("src", pokemon.imageUrl);
+    
+      //create element for height in modal
+      let pokemonHeight = $("<p>" + "Height: " + pokemon.height + "ft" + "</p>");
+
+      //create element for weight in modal
+      let pokemonWeight = $("<p>" + "Weight: " + pokemon.weight + "lbs" + "</p>");
+
+      //create element for types in modal
+      let pokemonType = $("<p>" + "Type: " + pokemon.types + "</p>");
+
+      //append to Modal Container
+      modalTitle.append(pokemonName)
+      modalBody.append(pokemonImage);
+      modalBody.append(pokemonHeight);
+      modalBody.append(pokemonWeight);
+      modalBody.append(pokemonType);
     });
   }
-
-  function showModal(pokemon) {
-    modalContainer.innerHTML = '';
-    let modal = document.createElement('div');
-    modal.classList.add('modal');
-
-    //close button
-    let closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'Close';
-    closeButtonElement.addEventListener('click', hideModal);
-    
-    //Modal: Pokemon img
-    let createImage = document.createElement('img');
-    createImage.classList.add('pokemon-img');
-    createImage.src = pokemon.imageUrl;
-
-    //Modal: Pokemon Name
-    let pokemonName = document.createElement('h1');
-    pokemonName.classList.add('h1');
-    pokemonName.innerText = pokemon.name;
-
-    //Modal: Pokemon Height
-    let pokemonHeight = document.createElement('p');
-    pokemonHeight.classList.add('p');
-    pokemonHeight.innerText = 'Height: ' + pokemon.height + 'ft';
-
-    //Modal: Pokemon Type
-    let pokemonType = document.createElement('p');
-    pokemonType.classList.add('p');
-    pokemonType.innerHTML = "Type: " + pokemon.types;
-
-
-    //append Child to Modal Container
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(createImage);
-    modal.appendChild(pokemonName);
-    modal.appendChild(pokemonHeight);
-    modal.appendChild(pokemonType);
-    modalContainer.appendChild(modal);
-
-    modalContainer.classList.add('is-visible');
-  }
-
-  function hideModal() {
-    modalContainer.classList.remove('is-visible');
-  }
-
-
-  //close with close button, esc key, and clicking outside modal
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-      hideModal();
-    }
-  });
-
-  window.addEventListener('click', (e) => {
-    let target = e.target;
-    if (target === modalContainer) {
-      hideModal();
-    }
-  });
 
   //details to show when button is clicked
   function loadDetails(item) {
@@ -131,6 +100,7 @@ let pokemonRepository = (function () {
       // Now we add the details to the item
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
+      item.weight = details.weight;
       item.types = details.types;
       item.types = [];
       details.types.forEach(function(itemType){
