@@ -1,4 +1,3 @@
-/* ------------------------ All Page Effects ------------------------ */
 :root {
   /* normal */
   --grey: #C1C1C1;
@@ -13,7 +12,7 @@
   --yellow: #FFD92D;
   
   /* grass */
-  --green: #90F373;
+  --green: #B0FED8;
 
   /* ice */
   --light-blue: #B9DFFA;
@@ -31,15 +30,9 @@
 
 * {
   box-sizing: border-box;
-  margin: 0 10px;;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
 }
-
-.header__logo {
-  width: 350px;
-  height: auto;
-  padding: 20px;
-}
-
 
 h1 {
   color: var(--font-color);
@@ -55,53 +48,22 @@ h2 {
   text-align: center;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.4;
-  color: var(--font-color);
+.btn {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: var(--blue);
+  font-weight: var(--font-bold);
+  text-transform: capitalize;
   text-align: center;
+  width: 100%;
+  margin: 2px;
 }
 
-* start grid fallback */
-.button {
-  display: inline-block;
-  width: 25%;
-}
-
-/* end grid fallback */
-@supports (display: grid) {
-  .pokemon-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
-    list-style-type: none;
-  }
-
-  .button {
-    background-color: var(--blue);
-    width: 100%;
-    height: 80px;
-    border-radius: 10px;
-    font-family: inherit;
-    font-weight: 700;
-    transition-duration: 0.4s;
+  .btn:hover,
+  .btn:focus {
     cursor: pointer;
-    color: var(--font-color);
-    border: none;
-    text-transform: capitalize;
-  }
-
-  .button:last-child {
-    grid-column: 3 / 3;
-    grid-row: 1 / 3;
-  }
-}
-
-  .button:hover,
-  .button:focus {
-    color: var(--yellow);
+    transition-duration: 0.4s;
+    background-color: var(--yellow);
   }
 
   /* ------------------------ Modal Style ------------------------ */
@@ -144,48 +106,3 @@ body {
     margin-bottom: 0;
     text-transform: capitalize;
   }
-  
-
-  /* ------------------------ Media Queries ------------------------ */
-@media all and (max-width: 750px) {
-  .pokemon-list {
-    grid-gap: 5px;
-  }
-
-  .button {
-    padding: 15px;
-  }
-
-  .button:last-child {
-    grid-column: auto / auto;
-    grid-row: auto / auto;
-  }
-}
-
-@media all and (min-width: 500px) and (max-width: 750px) {
-  .pokemon-list {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media all and (max-width: 500px) {
-  .pokemon-list {
-    grid-template-columns: 1fr;
-  }
-
-  h1 {
-    font-size: 30px;
-  }
-
-  h2 {
-    font-size: 18px;
-  }
-
-  .header__logo {
-    zoom: 80%;
-  }
-
-  .pokemon-img {
-    zoom: 80%;
-  }
-}
