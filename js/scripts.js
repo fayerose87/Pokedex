@@ -4,7 +4,6 @@ let pokemonRepository = (function () {
   //load pokemon from API
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-  // let modalContainer = document.querySelector('#modal-container');
 
   //adds pokemon to pokemonList
   function add(pokemon) {
@@ -42,8 +41,8 @@ let pokemonRepository = (function () {
 
   //create pokemon list with button
   function addListItem(pokemon) {
-    let pokemonList = $('.list-group');
-    let listPokemon = $('<li class="list-group-item col-3"></li>');
+    let pokemonList = $('.pokemon-list');
+    let listPokemon = $('<div class="list-group-item col-lg-3 col-md-6 col-sm-12"></div>');
     let button = $('<button></button>');
     button.text(pokemon.name);
     button.addClass('btn');
