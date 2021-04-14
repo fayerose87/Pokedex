@@ -7,6 +7,9 @@
   
   /* water */
   --blue: #509DFF;
+
+  /* dark blue */
+  --darkblue: #000033;
  
   /* electric */
   --yellow: #FFD92D;
@@ -25,18 +28,19 @@
 
 
   --font-color: #000;
+  --font-normal: 400;
   --font-bold: 700;
 }
 
 * {
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
 }
 
 h1 {
   color: var(--font-color);
   font-size: 40px;
+  font-weight: var(--font-bold);
   line-height: 0.5;
   text-align: center
 }
@@ -48,15 +52,42 @@ h2 {
   text-align: center;
 }
 
+p {
+  font-weight: var(--font-normal);
+}
+
+body {
+  background-image: linear-gradient(var(--blue), var(--darkblue));
+  background-repeat: no-repeat;
+}
+
+.container {
+  margin-top: 95px;
+}
+
+#search-bar {
+  font-weight: var(--font-normal);
+  padding: 10px;
+  border: 1px solid #000;
+  float: left;
+  width: 250px;
+  background: #fff;
+}
+
+.list-group-item {
+  border: none;
+  margin: -5px;
+  background: none;
+}
+
 .btn {
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   background-color: var(--blue);
   font-weight: var(--font-bold);
   text-transform: capitalize;
   text-align: center;
   width: 100%;
-  margin: 2px;
 }
 
   .btn:hover,
