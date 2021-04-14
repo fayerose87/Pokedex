@@ -2,6 +2,7 @@
 let pokemonRepository = (function () {
 
   //load pokemon from API
+  let searchInput = document.querySelector('.search')
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
@@ -42,7 +43,7 @@ let pokemonRepository = (function () {
   //create pokemon list with button
   function addListItem(pokemon) {
     let pokemonList = $('.pokemon-list');
-    let listPokemon = $('<div class="list-group-item col-lg-3 col-md-6 col-sm-12"></div>');
+    let listPokemon = $('<div class="list-group-item col-lg-3 col-md-6 col-sm-12 mx-auto"></div>');
     let button = $('<button></button>');
     button.text(pokemon.name);
     button.addClass('btn');
@@ -111,22 +112,22 @@ let pokemonRepository = (function () {
     });
   }
 
-  // //Search 
-  // $(document).ready(function() {
-  //   $('#search-bar').on('keyup', function() {
-  //     var value = $(this)
-  //       .val()
-  //       .toLowerCase();
-  //     $('.pokemonList *').filter(function() {
-  //       $(this).toggle(
-  //         $(this)
-  //           .text()
-  //           .toLowerCase()
-  //           .indexOf(value) > -1
-  //       );
-  //     });
-  //   });
-  // });
+  //Search 
+  $(document).ready(function() {
+    $('#search-bar').on('keyup', function() {
+      var value = $(this)
+        .val()
+        .toLowerCase();
+      $('.pokemon-list *').filter(function() {
+        $(this).toggle(
+          $(this)
+            .text()
+            .toLowerCase()
+            .indexOf(value) > -1
+        );
+      });
+    });
+  });
 
   return {
     add: add,
