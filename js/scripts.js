@@ -44,12 +44,21 @@ let pokemonRepository = (function () {
   function addListItem(pokemon) {
     let pokemonList = $('.pokemon-list');
     let listPokemon = $('<div class="list-group-item col-lg-3 col-md-6 col-sm-12 mx-auto"></div>');
+
     let button = $('<button></button>');
-    button.text(pokemon.name);
-    button.addClass('btn');
-    button.attr('type', 'button');
-    button.attr('data-target','#pokemonModal');
-    button.attr('data-toggle', 'modal');
+      button.text(pokemon.name);
+      button.addClass('btn');
+      button.attr('type', 'button');
+      button.attr('data-target','#pokemonModal');
+      button.attr('data-toggle', 'modal');
+
+    let image = $('<img class="pokemon-img" style="width:30%">');
+      image.attr('src', pokemon.imageUrl);
+
+    let types = pokemon.types[0];
+      $('.button').addClass(`${types.toLowerCase()}-bg`);
+
+    button.append(image);
     listPokemon.append(button);
     pokemonList.append(listPokemon);
     button.on('click', function () {
@@ -72,7 +81,7 @@ let pokemonRepository = (function () {
     
       //create img in modal
       let pokemonImage = $('<img class="modal-img" style="width:50%">');
-      pokemonImage.attr("src", pokemon.imageUrl);
+        pokemonImage.attr("src", pokemon.imageUrl);
     
       //create element for height in modal
       let pokemonHeight = $("<p>" + "Height: " + pokemon.height + "ft" + "</p>");
