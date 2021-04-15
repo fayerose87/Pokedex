@@ -63,6 +63,11 @@ body {
 
 .container {
   margin-top: 95px;
+  min-height: 100vh;
+}
+
+.pokemon-list {
+  min-height: 100vh;
 }
 
 #search-bar {
