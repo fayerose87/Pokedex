@@ -31,7 +31,7 @@ let pokemonRepository = (function () {
       json.results.forEach(function (item) {
         let pokemon = {
           name: item.name, 
-          detailsUrl: item.url
+          detailsUrl: item.url,
         };
         add(pokemon);
       });
@@ -52,15 +52,13 @@ let pokemonRepository = (function () {
       button.attr('data-target','#pokemonModal');
       button.attr('data-toggle', 'modal');
 
-    let image = $('<img class="pokemon-img" style="width:30%">');
-      image.attr('src', pokemon.imageUrl);
+    // let image = $('<img class="pokemon-img" style="width:30%">');
+    //   image.attr('src', pokemon.imageUrl);
 
-    let types = pokemon.types[0];
-      $('.button').addClass(`${types.toLowerCase()}-bg`);
-
-    button.append(image);
+    // button.append(image);
     listPokemon.append(button);
     pokemonList.append(listPokemon);
+
     button.on('click', function () {
       showDetails(pokemon);
     });
@@ -77,20 +75,24 @@ let pokemonRepository = (function () {
       modalBody.empty();
 
       //create element for name in modal
+
       let pokemonName = $("<h1>" + pokemon.name + "</h1>")
     
       //create img in modal
-      let pokemonImage = $('<img class="modal-img" style="width:50%">');
+      let pokemonImage = $('<img class="modal-img" style="width:75%">');
         pokemonImage.attr("src", pokemon.imageUrl);
     
       //create element for height in modal
-      let pokemonHeight = $("<p>" + "Height: " + pokemon.height + "ft" + "</p>");
+      let pokemonHeight = $("<p>" + "<b>Height:</b> " + pokemon.height + "ft" + "</p>");
 
       //create element for weight in modal
-      let pokemonWeight = $("<p>" + "Weight: " + pokemon.weight + "lbs" + "</p>");
+      let pokemonWeight = $("<p>" + "<b>Weight:</b> " + pokemon.weight + "lbs" + "</p>");
 
       //create element for types in modal
-      let pokemonType = $("<p>" + "Type: " + pokemon.types + "</p>");
+      let pokemonType = $("<p>" + "<b>Type:</b> " + pokemon.types + "</p>");
+
+      //create element for abilities in modal
+      let pokemonAbilities = $("<p>" + "<b>Abilities:</b> " + pokemon.abilities + "</p>");
 
       //append to Modal Container
       modalTitle.append(pokemonName)
@@ -98,6 +100,8 @@ let pokemonRepository = (function () {
       modalBody.append(pokemonHeight);
       modalBody.append(pokemonWeight);
       modalBody.append(pokemonType);
+      modalBody.append(pokemonAbilities);
+
     });
   }
 
@@ -115,7 +119,12 @@ let pokemonRepository = (function () {
       item.types = [];
       details.types.forEach(function(itemType){
         item.types.push(' ' + itemType.type.name);
-      })
+      });
+      item.abilities = details.abilities;
+      item.abilities = [];
+      details.abilities.forEach(function(itemAbilities) {
+        item.abilities.push(' ' + itemAbilities.ability.name);
+      });
     }).catch(function (e) {
       console.error(e);
     });
@@ -137,6 +146,7 @@ let pokemonRepository = (function () {
       });
     });
   });
+
 
   return {
     add: add,
