@@ -1,31 +1,22 @@
 :root {
-  /* normal */
-  --grey: #C1C1C1;
-  
-  /* fire */
-  --orange: #FA8E2E;
-  
-  /* water */
-  --blue: #509DFF;
-
-  /* dark blue */
-  --darkblue: #000033;
- 
-  /* electric */
-  --yellow: #FFD92D;
-  
-  /* grass */
-  --green: #B0FED8;
-
-  /* ice */
-  --light-blue: #B9DFFA;
-
-  /* fighting */
-  --red: #FF6250;
-
-  /* poison */
-  --purple: #CD99E1;
-
+  --normal: #C1C1C1;
+  --fire: #FA8E2E;
+  --water: #509DFF;
+  --grass: #B0FED8;
+  --electric: #FFD92D;
+  --ice: #B9DFFA;
+  --fighting: #FF6250;
+  --poison: #A33EA1;
+  --ground: #E2BF65;
+  --flying: #A98FF3;
+  --psychic: #F95587;
+  --bug: #A6B91A;
+  --rock: #B2A061;
+  --ghost: #735797;
+  --dark: #000033;
+  --dragon: #6F35FC;
+  --steel: #B7B7CE;
+  --fairy: #D685AD;
 
   --font-color: #000;
   --font-normal: 400;
@@ -57,7 +48,7 @@ p {
 }
 
 body {
-  background-image: linear-gradient(var(--blue), var(--darkblue));
+  background-image: linear-gradient(var(--water), var(--dark));
   background-repeat: no-repeat;
 }
 
@@ -82,13 +73,12 @@ body {
 .list-group-item {
   border: none;
   margin: -5px;
-  background: none;
 }
 
 .btn {
+  background-color: var(--grass);
   border-radius: 10px;
   padding: 20px;
-  background-color: var(--blue);
   font-weight: var(--font-bold);
   text-transform: capitalize;
   text-align: center;
@@ -99,19 +89,89 @@ body {
   .btn:focus {
     cursor: pointer;
     transition-duration: 0.4s;
-    background-color: var(--yellow);
+  }
+
+  /* ------------------------ Background Colors ------------------------ */
+
+  .normal-bg {
+    background-color: var(--normal);
+  }
+
+  .fire-bg {
+    background-color: var(--fire);
+  }
+
+  .water-bg {
+    background-color: var(--water);
+  }
+
+  .grass-bg {
+    background-color: var(--grass);
+  }
+
+  .electric-bg {
+    background-color: var(--electric);
+  }
+
+  .ice-bg {
+    background-color: var(--ice);
+  }
+
+  .fighting-bg {
+    background-color: var(--fighting);
+  }
+
+  .poison-bg {
+    background-color: var(--poison);
+  }
+
+  .ground-bg {
+    background-color: var(--ground);
+  }
+
+  .flying-bg {
+    background-color: var(--flying);
+  }
+
+  .psychic-bg {
+    background-color: var(--psychic);
+  }
+
+  .bug-bg {
+    background-color: var(--bug);
+  }
+
+  .rock-bg {
+    background-color: var(--rock);
+  }
+
+  .ghost-bg {
+    background-color: var(--ghost);
+  }
+
+  .dark-bg {
+    background-color: var(--dark);
+  }
+
+  .dragon-bg {
+    background-color: var(--dragon);
+  }
+
+  .steel-bg {
+    background-color: var(--steel);
+  }
+
+  .fairy-bg {
+    background-color: var(--fairy);
   }
 
   /* ------------------------ Modal Style ------------------------ */
-  
-
 
   .modal-dialog {
     padding: 20px;
     box-sizing: border-box;
     overflow: auto; 
     display: grid;
-    text-align: center;
   }
   
   .modal-content {
@@ -121,16 +181,17 @@ body {
     background: #fff;
     padding: 15px;
     width: 100%;
-    border: 5px solid var(--green);
+    border: 5px solid var(--dragon);
     max-width: 500px;
-    justify-content: center;
+    justify-content: left;
     border-radius: 25px;
     
   }
   
-
-  .pokemon-img {
-    width: 250px;
+  .modal-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .modal h1 {
