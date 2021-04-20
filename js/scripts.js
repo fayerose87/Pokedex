@@ -43,7 +43,7 @@ let pokemonRepository = (function () {
   //create pokemon list with button
   function addListItem(pokemon) {
     let pokemonList = $('.pokemon-list');
-    let listPokemon = $('<div class="list-group-item col-lg-3 col-md-6 col-sm-12 mx-auto"></div>');
+    let listPokemon = $('<div class="list-group-item col-lg-4 col-md-6 col-sm-12 mx-auto"></div>');
 
     let button = $('<button></button>');
       button.text(pokemon.name);
@@ -88,16 +88,15 @@ let pokemonRepository = (function () {
       let pokemonAbilities = $("<p>" + "<b>Abilities:</b> " + pokemon.abilities + "</p>");
 
       let types = pokemon.types[0];
-      $('.modal-content').addClass(`${types.toLowerCase()}-bg`);
+        $('.modal-content').addClass(`${types.toLowerCase()}-bg`);
         
-      $('.close').on('click', function() {
-        $('.modal-content').removeClass(`${types.toLowerCase()}-bg`);
-
-      // $('.close').keyup(function(e) {
-      //     if(e.key === "Escape") {
-      //       $('.modal-content').removeClass(`${types.toLowerCase()}-bg`);
-      //     }
-       });
+       $('.close').on('click', function() {
+          $('.modal-content').removeClass(`${types.toLowerCase()}-bg`);
+      
+        $('#pokemonModal').on('hidden.bs.modal', function (e) {
+          $('.modal-content').removeClass(`${types.toLowerCase()}-bg`)
+        }); 
+      });
 
       //append to Modal Container
       modalTitle.append(pokemonName)
