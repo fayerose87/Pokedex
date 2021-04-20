@@ -9,8 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Turret+Road:wght@800&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
@@ -18,13 +17,13 @@
 
   <header class="page-header">
 
-   <nav class="navbar navbar-light bg-light fixed-top">
+   <nav class="navbar navbar-dark bg-dark fixed-top">
      <a class="navbar-brand" href="index.html">
-       <img src="img/pokedex.png" height="70" class="d-inline-block align-top" alt="pokeball illustration and title Pokedex">
+       <img src="img/pokedex.png" height="90" class="d-inline-block align-top" alt="pokeball illustration and title Pokedex">
       </a>
       
       <form class="d-flex">
-        <input placeholder="Search the Pokedex..." class="form-control mr-sm-2" id="search-bar" type="search" name="search" value="" aria-label="search">
+        <input placeholder="Search the Pokédex..." class="form-control" id="search-bar" type="search" name="search" value="" aria-label="search">
       </form>
 
     </nav>
@@ -33,12 +32,19 @@
 
  <!-- Pokedex -->
 
-  <div class="container">
-    <div class="row pokemon-list list-group-flush bg-white"></div>
-  </div>>
+  <div class="pokemon-imgs">
+    <img src="img/pikachu.png" class="pokemon-left">
+    <img src="img/charmander.png" class="pokemon-right">
+  </div>
+
+  <div class="container bg-white">
+    <img src="img/Gotta-catch-em-all.png" class="container-header">
+    
+    <div class="row pokemon-list"></div>
+  </div>
   
   <div class="modal fade" id="pokemonModal" tabindex="-1" role="dialog" aria-labelledby="pokemonModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
            <h5 class="modal-title" id="pokemonModalLabel"></h5>
