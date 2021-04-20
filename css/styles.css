@@ -262,6 +262,7 @@ body {
   }
 
   .container-header {
+    width: 80%;
     margin-top: 85px;
   }
 }
@@ -291,7 +292,8 @@ body {
   }
 
   .container-header {
-     margin-top: 85px;
+    width: 80%;
+    margin-top: 85px;
   }
 
   }
