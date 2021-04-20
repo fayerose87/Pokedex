@@ -51,15 +51,11 @@ let pokemonRepository = (function () {
       button.attr('type', 'button');
       button.attr('data-target','#pokemonModal');
       button.attr('data-toggle', 'modal');
-
-    // let image = $('<img class="pokemon-img" style="width:30%">');
-    //   image.attr('src', pokemon.imageUrl);
-
-    // button.append(image);
-    listPokemon.append(button);
-    pokemonList.append(listPokemon);
-
-    button.on('click', function () {
+      
+      listPokemon.append(button);
+      pokemonList.append(listPokemon);
+      
+      button.on('click', function () {
       showDetails(pokemon);
     });
   }
@@ -83,10 +79,7 @@ let pokemonRepository = (function () {
         pokemonImage.attr("src", pokemon.imageUrl);
     
       //create element for height in modal
-      let pokemonHeight = $("<p>" + "<b>Height:</b> " + pokemon.height + "ft" + "</p>");
-
-      //create element for weight in modal
-      let pokemonWeight = $("<p>" + "<b>Weight:</b> " + pokemon.weight + "lbs" + "</p>");
+      let pokemonStats = $("<p>" + "<b>Height & Weight:</b> " + pokemon.height + "ft" + ", " + pokemon.weight + "lbs" + "</p>");
 
       //create element for types in modal
       let pokemonType = $("<p>" + "<b>Type:</b> " + pokemon.types + "</p>");
@@ -94,16 +87,26 @@ let pokemonRepository = (function () {
       //create element for abilities in modal
       let pokemonAbilities = $("<p>" + "<b>Abilities:</b> " + pokemon.abilities + "</p>");
 
+      let types = pokemon.types[0];
+      $('.modal-content').addClass(`${types.toLowerCase()}-bg`);
+        
+      $('.close').on('click', function() {
+        $('.modal-content').removeClass(`${types.toLowerCase()}-bg`);
+
+      // $('.close').keyup(function(e) {
+      //     if(e.key === "Escape") {
+      //       $('.modal-content').removeClass(`${types.toLowerCase()}-bg`);
+      //     }
+       });
+
       //append to Modal Container
       modalTitle.append(pokemonName)
       modalBody.append(pokemonImage);
-      modalBody.append(pokemonHeight);
-      modalBody.append(pokemonWeight);
+      modalBody.append(pokemonStats);
       modalBody.append(pokemonType);
       modalBody.append(pokemonAbilities);
-
-    });
-  }
+     })
+    }
 
   //details to show when button is clicked
   function loadDetails(item) {
