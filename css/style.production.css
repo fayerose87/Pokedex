@@ -1,0 +1,276 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  color: #000;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 0.5;
+}
+
+p {
+  font-weight: 400;
+}
+
+body {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#B0FED8), to(#509DFF));
+  background-image: -o-linear-gradient(#B0FED8, #509DFF);
+  background-image: linear-gradient(#B0FED8, #509DFF);
+  background-repeat: no-repeat;
+}
+
+.container {
+  position: relative;
+  margin-top: 6rem;
+}
+
+.container-header {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.8rem;
+  margin-bottom: 0.65rem;
+}
+
+.pokemon-list {
+  min-height: 100vh;
+}
+
+#search-bar {
+  font-weight: 400;
+  padding: 0.65rem;
+  border: 0.07rem solid #000;
+  width: 15.6rem;
+  background: #fff;
+}
+
+.list-group-item {
+  border: none;
+  background: none;
+}
+
+.btn {
+  background-color: #f81c1c;
+  border-radius: 0.65rem;
+  padding: 1.25rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  border: solid 0.25rem #000;
+}
+
+  .btn:hover {
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+         -o-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+    background-color: #FFD92D;
+  }
+
+  .btn:focus {
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+         -o-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+    background-color: #FFD92D;
+  }
+
+.pokemon-left,
+.pokemon-right {
+  position: fixed;
+  bottom: 0;
+  max-width: 45rem;
+  padding: 1.25rem;
+}
+
+.pokemon-left {
+  left: 0;
+}
+
+.pokemon-right {
+  right: 0;
+  }
+
+  /* ------------------------ Background Colors ------------------------ */
+
+.normal-bg {
+  border: 0.5rem solid #C1C1C1;
+}
+
+.fire-bg {
+  border: 0.5rem solid #FA8E2E;
+}
+
+.water-bg {
+  border: 0.5rem solid #509DFF;
+}
+
+.grass-bg {
+  border: 0.5rem solid #B0FED8;
+}
+
+.electric-bg {
+  border: 0.5rem solid #FFD92D;
+}
+
+.ice-bg {
+  border: 0.5rem solid #B9DFFA;
+}
+
+.fighting-bg {
+  border: 0.5rem solid #FF6250;
+}
+
+.poison-bg {
+  border: 0.5rem solid #A33EA1;
+}
+
+.ground-bg {
+  border: 0.5rem solid #E2BF65;
+}
+
+.flying-bg {
+  border: 0.5rem solid #A98FF3;
+}
+
+.psychic-bg {
+  border: 0.5rem solid #F95587;
+}
+
+.bug-bg {
+  border: 0.5rem solid #A6B91A;
+}
+
+.rock-bg {
+  border: 0.5rem solid #B2A061;
+}
+
+.ghost-bg {
+   border: 0.5rem solid #735797;
+}
+
+.dark-bg {
+  border: 0.5rem solid #000033;
+}
+
+.dragon-bg {
+   border: 0.5rem solid #6F35FC;
+}
+
+.steel-bg {
+  border: 0.5rem solid #B7B7CE;
+}
+
+.fairy-bg {
+  border: 0.5rem solid #D685AD;
+}
+
+  /* ------------------------ Modal Style ------------------------ */
+  
+.modal-content {
+  margin: 0.65rem;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #fff;
+  padding: 1rem;
+  width: 100%;
+  max-width: 31rem;
+  border-radius: 1.5rem;
+}
+
+.modal-header {
+  display: block;
+  text-transform: capitalize;
+}
+  
+.modal-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  max-width: 18.75rem;
+}
+
+.modal p {
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  margin-bottom: 0;
+  text-transform: capitalize;
+}
+
+  /* ------------------------ Media Queries ------------------------ */
+  
+@media all and (min-width: 500px) and (max-width: 750px) {
+  .navbar-brand {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .d-flex {
+    display: block;
+    text-align: center;
+    margin: 2% auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pokemon-left {
+    display: none;
+  }
+  
+  .pokemon-right {
+    display: none;
+  }
+
+  body {
+    display: none;
+  }
+
+  .container-header {
+    width: 80%;
+    margin-top: 5.3rem;
+  }
+}
+  
+@media all and (max-width: 705px) {
+  .navbar-brand {
+    display: block;
+  }
+
+ .d-flex {
+    display: block;
+    text-align: center;
+    margin: 2% auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pokemon-imgs {
+     display: none;
+  }
+
+  body {
+    display: none;
+    background-image: none;
+  }
+
+  .container-header {
+    width: 80%;
+    margin-top: 5.3rem;
+  }
+}
